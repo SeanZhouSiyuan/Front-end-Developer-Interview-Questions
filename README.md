@@ -187,10 +187,27 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 var foo = 10 + '20';
 ```
 
+*Answer:*
+```javascript
+"1020"
+```
+
 *Question: How would you make this work?*
 ```javascript
 add(2, 5); // 7
 add(2)(5); // 7
+```
+
+*Answer:*
+```javascript
+function add() {
+  var arr = [].slice.call(arguments);
+  if(arr.length === 2) {
+    return arr[0] + arr[1];
+  } else if(arr.length === 1) {
+    return function(e) {return arr[0] + e;}
+  }
+}
 ```
 
 *Question: What value is returned from the following statement?*
@@ -198,9 +215,19 @@ add(2)(5); // 7
 "i'm a lasagna hog".split("").reverse().join("");
 ```
 
+*Answer:*
+```javascript
+"goh angasal a m'i"
+```
+
 *Question: What is the value of `window.foo`?*
 ```javascript
 ( window.foo || ( window.foo = "bar" ) );
+```
+
+*Answer:*
+```javascript
+"bar"
 ```
 
 *Question: What is the outcome of the two alerts below?*
@@ -211,6 +238,14 @@ var foo = "Hello";
   alert(foo + bar);
 })();
 alert(foo + bar);
+```
+
+*Answer:*
+```javascript
+// The first alert is inside a immediately invoked function expression (IIFE), where bar is declared and assigned value " World",
+// hence, it alerts "Hello World".
+// The second alert is outside the IIFE, in which the variable bar is not visible,
+// hence, the console throws a ReferenceError message.
 ```
 
 *Question: What is the value of `foo.length`?*
