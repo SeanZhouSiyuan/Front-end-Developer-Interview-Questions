@@ -255,11 +255,21 @@ foo.push(1);
 foo.push(2);
 ```
 
+*Answer:*
+```javascript
+2
+```
+
 *Question: What is the value of `foo.x`?*
 ```javascript
 var foo = {n: 1};
 var bar = foo;
 foo.x = foo = {n: 2};
+```
+
+*Answer:*
+```javascript
+undefined
 ```
 
 *Question: What does the following code print?*
@@ -269,6 +279,13 @@ setTimeout(function() {
   console.log('two');
 }, 0);
 console.log('three');
+```
+
+*Answer:*
+```javascript
+"one"
+"three"
+"two"
 ```
 
 #### Fun Questions:
